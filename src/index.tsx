@@ -1,6 +1,5 @@
 import { render } from 'react-dom';
-
-const App = () => <h1>App</h1>;
+import App from './app';
 
 render(
   <App />,

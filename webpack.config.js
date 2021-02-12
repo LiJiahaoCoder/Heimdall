@@ -20,6 +20,10 @@ const config = {
     filename: 'heimdall.[contenthash:8].js',
     publicPath: '/',
   },
+  resolve: {
+    alias: { '@': path.resolve(__dirname, 'src') },
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+  },
   module: {
     rules: [
       {
@@ -67,9 +71,6 @@ const config = {
         ],
       },
     ],
-  },
-  resolve: {
-    alias: { '@': path.resolve(__dirname, 'src') },
   },
   plugins: [
     new HtmlWebpackPlugin({
