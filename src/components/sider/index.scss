@@ -1,6 +1,6 @@
 .sider {
   width: 20%;
-  height: calc(100% - $header-height);
+  height: calc(100% - 80px);
   position: fixed;
   top: $header-height;
   background-color: $black-70;
