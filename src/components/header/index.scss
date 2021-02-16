@@ -1,5 +1,12 @@
 .header {
   width: 100%;
-  height: 80px;
+  height: $header-height;
   position: fixed;
+  background-color: $black-70;
+  @include flex-center;
+
+  .title {
+    color: $white-90;
+    user-select: none;
+  }
 }

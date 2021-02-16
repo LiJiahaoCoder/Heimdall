@@ -1,7 +1,13 @@
 .panel {
   width: 20%;
-  height: 100%;
-  padding-top: 80px;
+  height: calc(100% - $header-height);
   position: fixed;
   right: 0;
+  top: $header-height;
+  background-color: $black-70;
+  @include flex-center;
+
+  .title {
+    color: $white-90;
+  }
 }
