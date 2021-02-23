@@ -1,9 +1,16 @@
 .header {
-  width: 100%;
+  width: -webkit-fill-available;
   height: $header-height;
   position: fixed;
   background-color: $black-70;
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+
+  .icon:hover {
+    cursor: pointer;
+  }
 
   .title {
     color: $white-90;
