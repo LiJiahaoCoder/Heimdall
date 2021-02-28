@@ -1,13 +1,41 @@
 .sider {
-  width: 20%;
-  min-width: 240px;
   height: calc(100% - 80px);
+  padding: 0 24px;
   position: fixed;
   top: $header-height;
   background-color: $black-70;
   @include flex-center;
+  flex-direction: column;
+  transition: width .3s, min-width .3s;
+
+  &.unfold {
+    width: 240px;
+  }
+
+  &.fold {
+    width: 24px;
+  }
 
   .title {
+    @include ellipsis;
     color: $white-90;
+  }
+}
+
+.content {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle {
+  align-self: flex-start;
+  padding: 12px 0;
+
+  .icon {
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
