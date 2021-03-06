@@ -3,8 +3,9 @@
   height: calc(100% - 80px);
   padding: 0 24px;
   position: fixed;
+  z-index: $z-panel;
   top: $header-height;
-  background-color: $black-70;
+  background-color: $white-10;
   @include flex-center;
   flex-direction: column;
   transition: right .5s, opacity .5s;

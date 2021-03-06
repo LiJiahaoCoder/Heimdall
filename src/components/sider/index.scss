@@ -2,8 +2,9 @@
   height: calc(100% - 80px);
   padding: 0 24px;
   position: fixed;
+  z-index: $z-sider;
   top: $header-height;
-  background-color: $black-70;
+  background-color: $white-10;
   @include flex-center;
   flex-direction: column;
   transition: width .3s, min-width .3s;
