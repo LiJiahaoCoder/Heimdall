@@ -8,6 +8,8 @@ import {
   Mesh,
 } from "three";
 
+import styles from "./index.scss";
+
 const Main = () => {
   const [scene, setScene] = useState<Scene>();
   const [camera, setCamera] = useState<PerspectiveCamera>();
@@ -32,13 +34,17 @@ const Main = () => {
       0.1,
       1000
     );
-    const _renderer = new WebGLRenderer();
+    const _renderer = new WebGLRenderer({
+      canvas: document.querySelector<HTMLCanvasElement>("#canvas")!,
+      antialias: true,
+      alpha: true,
+    });
+    _renderer.setSize(innerWidth, innerHeight);
+    _renderer.setClearColor(0x000000);
+
     setScene(_scene);
     setCamera(_camera);
     setRenderer(_renderer);
-
-    _renderer.setSize(innerWidth, innerHeight);
-    document.querySelector("#main")!.append(_renderer.domElement);
   }, []);
 
   useEffect(() => {
@@ -56,7 +62,11 @@ const Main = () => {
 
   animate();
 
-  return <section id="main" />;
+  return (
+    <section id="main">
+      <canvas id="canvas" className={styles.canvas} />
+    </section>
+  );
 };
 
 export default Main;
