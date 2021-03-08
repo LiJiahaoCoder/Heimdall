@@ -7,7 +7,7 @@
   background-color: $white-10;
   @include flex-center;
   flex-direction: column;
-  transition: width .3s, min-width .3s;
+  transition: width .3s;
 
   &.unfold {
     width: 240px;

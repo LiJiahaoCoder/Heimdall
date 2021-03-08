@@ -21,7 +21,7 @@ const App = () => {
       setVisibilities({
         header: visibility,
         sider: visibility,
-        panel: visibility,
+        panel: visibilities.panel,
       });
       return;
     }

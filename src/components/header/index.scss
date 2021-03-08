@@ -1,5 +1,4 @@
 .header {
-  width: -webkit-fill-available;
   height: $header-height;
   position: fixed;
   z-index: $z-header;
@@ -8,6 +7,15 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
+  transition: width .3s;
+
+  &.unfold {
+    width: calc(100% - 48px);
+  }
+
+  &.fold {
+    width: 24px;
+  }
 
   .icon:hover {
     cursor: pointer;
