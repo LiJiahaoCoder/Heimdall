@@ -1,40 +1,41 @@
-import { useState } from "react";
 import { MenuFoldOne, MenuUnfoldOne } from "@icon-park/react";
+import { ComponentName } from "@/constants";
 import { ICON_COLOR } from "@/constants/styles";
 
 import styles from "./index.scss";
 
-const Sider = () => {
-  const [fold, setFold] = useState(false);
+interface Props {
+  visible: boolean;
+  onSetSiderVisibility: (name: ComponentName) => void;
+}
 
-  const onToggleSider = () => {
-    setFold(!fold);
-  };
-
-  return (
-    <section
-      className={`${styles.sider} ${fold ? styles.fold : styles.unfold}`}
-    >
-      <div className={styles.content}>
-        <h2 className={styles.title}>Content</h2>
-      </div>
-      <div className={styles.toggle}>
-        {fold ? (
-          <MenuFoldOne
-            className={styles.icon}
-            fill={ICON_COLOR}
-            onClick={onToggleSider}
-          />
-        ) : (
-          <MenuUnfoldOne
-            className={styles.icon}
-            fill={ICON_COLOR}
-            onClick={onToggleSider}
-          />
-        )}
-      </div>
-    </section>
-  );
-};
+const Sider = ({ visible, onSetSiderVisibility }: Props) => (
+  <section
+    className={`${styles.sider} ${visible ? styles.unfold : styles.fold}`}
+  >
+    <div className={styles.content}>
+      <h2 className={styles.title}>Content</h2>
+    </div>
+    <div className={styles.toggle}>
+      {visible ? (
+        <MenuFoldOne
+          className={styles.icon}
+          fill={ICON_COLOR}
+          onClick={() => {
+            onSetSiderVisibility(ComponentName.Sider);
+          }}
+        />
+      ) : (
+        <MenuUnfoldOne
+          className={styles.icon}
+          fill={ICON_COLOR}
+          onClick={() => {
+            onSetSiderVisibility(ComponentName.Sider);
+          }}
+        />
+      )}
+    </div>
+  </section>
+);
 
 export default Sider;

@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { IconProvider, DEFAULT_ICON_CONFIGS } from "@icon-park/react";
+import { ComponentName } from "@/constants";
 import Header from "@/components/header";
 import Sider from "@/components/sider";
 import Panel from "@/components/panel";
@@ -6,18 +8,52 @@ import Main from "@/components/main";
 
 import "./app.scss";
 
-const App = () => (
-  <IconProvider
-    value={{
-      ...DEFAULT_ICON_CONFIGS,
-      size: 24,
-    }}
-  >
-    <Header />
-    <Sider />
-    <Panel />
-    <Main />
-  </IconProvider>
-);
+const App = () => {
+  const [visibilities, setVisibilities] = useState({
+    header: true,
+    sider: true,
+    panel: false,
+  });
+
+  const handleSetVisibilities = (name?: ComponentName) => {
+    if (!name) {
+      const visibility = !visibilities.header;
+      setVisibilities({
+        header: visibility,
+        sider: visibility,
+        panel: visibility,
+      });
+      return;
+    }
+
+    setVisibilities({
+      ...visibilities,
+      [name]: !visibilities[name],
+    });
+  };
+
+  return (
+    <IconProvider
+      value={{
+        ...DEFAULT_ICON_CONFIGS,
+        size: 24,
+      }}
+    >
+      <Header
+        visible={visibilities.header}
+        onClickFullScreen={handleSetVisibilities}
+      />
+      <Sider
+        visible={visibilities.sider}
+        onSetSiderVisibility={handleSetVisibilities}
+      />
+      <Panel
+        visible={visibilities.panel}
+        onSetPanelVisibility={handleSetVisibilities}
+      />
+      <Main />
+    </IconProvider>
+  );
+};
 
 export default App;
