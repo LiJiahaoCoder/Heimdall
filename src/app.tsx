@@ -1,19 +1,30 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { IconProvider, DEFAULT_ICON_CONFIGS } from "@icon-park/react";
 import { ComponentName } from "@/constants";
+import { getFloors } from "@/apis";
 import Header from "@/components/header";
 import Sider from "@/components/sider";
 import Panel from "@/components/panel";
 import Main from "@/components/main";
+import Loading from "@/components/loading";
 
 import "./app.scss";
 
 const App = () => {
+  const [loading, setLoading] = useState(false);
   const [visibilities, setVisibilities] = useState({
     header: true,
     sider: true,
     panel: false,
   });
+
+  const getData = useCallback(async () => {
+    setLoading(true);
+    try {
+      await getFloors();
+      setLoading(false);
+    } catch {}
+  }, []);
 
   const handleSetVisibilities = (name?: ComponentName) => {
     if (!name) {
@@ -31,6 +42,10 @@ const App = () => {
       [name]: !visibilities[name],
     });
   };
+
+  useEffect(() => {
+    void getData();
+  }, [getData]);
 
   return (
     <IconProvider
@@ -52,6 +67,7 @@ const App = () => {
         onSetPanelVisibility={handleSetVisibilities}
       />
       <Main />
+      <Loading visible={loading} />
     </IconProvider>
   );
 };
