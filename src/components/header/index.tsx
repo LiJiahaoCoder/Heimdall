@@ -9,34 +9,32 @@ interface Props {
   onClickFullScreen: (name?: ComponentName) => void;
 }
 
-const Header = ({ visible, onClickFullScreen }: Props) => {
-  return (
-    <section
-      className={`${styles.header} ${visible ? styles.unfold : styles.fold}`}
-    >
-      {visible ? (
-        <>
-          <Back className={styles.icon} theme="filled" fill={ICON_COLOR} />
-          <h1 className={styles.title}>Heimdall</h1>
-          <HandleLeft
-            className={styles.icon}
-            fill={ICON_COLOR}
-            onClick={() => {
-              onClickFullScreen(undefined);
-            }}
-          />
-        </>
-      ) : (
-        <HandleRight
+const Header = ({ visible, onClickFullScreen }: Props) => (
+  <section
+    className={`${styles.header} ${visible ? styles.unfold : styles.fold}`}
+  >
+    {visible ? (
+      <>
+        <Back className={styles.icon} theme="filled" fill={ICON_COLOR} />
+        <h1 className={styles.title}>Heimdall</h1>
+        <HandleLeft
           className={styles.icon}
           fill={ICON_COLOR}
           onClick={() => {
             onClickFullScreen(undefined);
           }}
         />
-      )}
-    </section>
-  );
-};
+      </>
+    ) : (
+      <HandleRight
+        className={styles.icon}
+        fill={ICON_COLOR}
+        onClick={() => {
+          onClickFullScreen(undefined);
+        }}
+      />
+    )}
+  </section>
+);
 
 export default Header;
