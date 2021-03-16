@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { IconProvider, DEFAULT_ICON_CONFIGS } from "@icon-park/react";
 import { ComponentName } from "@/constants";
 import { getFloors } from "@/apis";
@@ -18,13 +18,13 @@ const App = () => {
     panel: false,
   });
 
-  const getData = useCallback(async () => {
+  const getData = async () => {
     setLoading(true);
     try {
       await getFloors();
       setLoading(false);
     } catch {}
-  }, []);
+  };
 
   const handleSetVisibilities = (name?: ComponentName) => {
     if (!name) {
@@ -45,7 +45,7 @@ const App = () => {
 
   useEffect(() => {
     void getData();
-  }, [getData]);
+  }, []);
 
   return (
     <IconProvider
