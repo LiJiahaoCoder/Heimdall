@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": "f1",
+      "status": "NORMAL"
+    },
+    {
+      "id": "f2",
+      "status": "WARNING"
+    },
+    {
+      "id": "f3",
+      "status": "DANGER"
+    },
+    {
+      "id": "f4",
+      "status": "NORMAL"
+    },
+    {
+      "id": "f5",
+      "status": "NORMAL"
+    }
+  ]
+}
