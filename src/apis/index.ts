@@ -1,4 +1,5 @@
 import Floors from "@/mock/floors.json";
+import { Position } from "@/types";
 
 async function request<T>(data: T): Promise<T> {
   return new Promise((resolve) => {
@@ -8,8 +9,6 @@ async function request<T>(data: T): Promise<T> {
   });
 }
 
-export function getFloors(): Promise<{
-  data: Array<{ id: string; name: string }>;
-}> {
+export function getFloors(): Promise<{ data: Position[] }> {
   return request(Floors);
 }

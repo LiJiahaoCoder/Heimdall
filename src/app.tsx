@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { IconProvider, DEFAULT_ICON_CONFIGS } from "@icon-park/react";
 import { ComponentName } from "@/constants";
+import { Position } from "@/types";
 import { getFloors } from "@/apis";
 import Header from "@/components/header";
 import Sider from "@/components/sider";
@@ -8,10 +9,9 @@ import Panel from "@/components/panel";
 import Main from "@/components/main";
 import Loading from "@/components/loading";
 
-import "./app.scss";
-
 const App = () => {
   const [loading, setLoading] = useState(false);
+  const [positions, setPositions] = useState<Position[]>([]);
   const [visibilities, setVisibilities] = useState({
     header: true,
     sider: true,
@@ -21,7 +21,8 @@ const App = () => {
   const getData = async () => {
     setLoading(true);
     try {
-      await getFloors();
+      const { data } = await getFloors();
+      setPositions(data);
       setLoading(false);
     } catch {}
   };
@@ -59,6 +60,7 @@ const App = () => {
         onClickFullScreen={handleSetVisibilities}
       />
       <Sider
+        menus={positions}
         visible={visibilities.sider}
         onSetSiderVisibility={handleSetVisibilities}
       />
