@@ -8,10 +8,16 @@ import styles from "./index.scss";
 interface Props {
   menus: Position[];
   visible: boolean;
+  onClickItem: (id: string) => void;
   onSetSiderVisibility: (name: ComponentName) => void;
 }
 
-const Sider = ({ menus, visible, onSetSiderVisibility }: Props) => (
+const Sider = ({
+  menus,
+  visible,
+  onClickItem,
+  onSetSiderVisibility,
+}: Props) => (
   <section
     className={`${styles.sider} ${visible ? styles.unfold : styles.fold}`}
   >
@@ -19,7 +25,13 @@ const Sider = ({ menus, visible, onSetSiderVisibility }: Props) => (
       <h2 className={styles.title}>楼层列表</h2>
       <li className={styles.menuList}>
         {menus.map((menu) => (
-          <ol key={menu.id} className={styles.menuItem}>
+          <ol
+            key={menu.id}
+            className={styles.menuItem}
+            onClick={() => {
+              onClickItem(menu.id);
+            }}
+          >
             {menu.name}
           </ol>
         ))}

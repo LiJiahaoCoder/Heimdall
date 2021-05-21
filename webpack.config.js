@@ -8,6 +8,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 const NODE_ENV = process.env.NODE_ENV || "production";
 const __DEV__ = NODE_ENV === "development";
@@ -83,7 +84,7 @@ const config = {
 };
 
 if (__DEV__) {
-  config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  config.plugins.push(new ReactRefreshWebpackPlugin());
   config.devServer = {
     port: 2333,
     stats: "errors-only",

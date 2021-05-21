@@ -1,15 +1,17 @@
 import { Close } from "@icon-park/react";
 import { ComponentName } from "@/constants";
+import { Detail } from "@/types";
 import { ICON_COLOR } from "@/constants/styles";
 
 import styles from "./index.scss";
 
 interface Props {
   visible: boolean;
+  detail?: Detail;
   onSetPanelVisibility: (name: ComponentName) => void;
 }
 
-const Panel = ({ visible, onSetPanelVisibility }: Props) => (
+const Panel = ({ visible, detail, onSetPanelVisibility }: Props) => (
   <section
     className={`${styles.panel} ${visible ? styles.visible : styles.invisible}`}
   >
@@ -21,7 +23,12 @@ const Panel = ({ visible, onSetPanelVisibility }: Props) => (
       }}
     />
     <div className={styles.content}>
-      <h2 className={styles.title}>Content</h2>
+      <h2 className={styles.name}>{detail?.name}</h2>
+      <div className={styles.status}>
+        <span>状态：{detail?.status}</span>
+        <span className={styles.status} />
+      </div>
+      <p className={styles.description}>描述：{detail?.description}</p>
     </div>
   </section>
 );

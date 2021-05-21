@@ -2,23 +2,33 @@
   "data": [
     {
       "id": "f1",
-      "status": "NORMAL"
+      "name": "一楼 - 市场部机房",
+      "status": "NORMAL",
+      "description": "市场部人员整天摸鱼不干活..."
     },
     {
       "id": "f2",
-      "status": "WARNING"
+      "name": "二楼 - 销售部机房",
+      "status": "WARNING",
+      "description": "销售部的销售们天天出去ho酒，这谁顶得住啊~"
     },
     {
       "id": "f3",
-      "status": "DANGER"
+      "name": "三楼 - 产品部机房",
+      "status": "DANGER",
+      "description": "产品？呵呵"
     },
     {
       "id": "f4",
-      "status": "NORMAL"
+      "name": "四楼 - 技术部机房",
+      "status": "NORMAL",
+      "description": "技术部，牛逼！"
     },
     {
       "id": "f5",
-      "status": "NORMAL"
+      "name": "五楼 - 总机房",
+      "status": "NORMAL",
+      "description": "总机房，佛祖保佑！"
     }
   ]
 }
